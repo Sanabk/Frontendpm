@@ -1,0 +1,56 @@
+h2{
+    color:black;
+    text-align: left;
+    text-transform: capitalize;
+    text-shadow: 3px 2px #808080;
+
+}
+
+div .panel-body{
+    width: 50%;
+    padding: 12px 20px;
+    display: inline-block;
+    border: 1px solid #808080;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin:  auto;
+
+    vertical-align: middle;
+    line-height: 10px;
+
+
+
+}
+
+div .panel-heading {
+    width: 50%;
+    padding: 12px 20px;
+    display: inline-block;
+    border: 1px solid #808080;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin: auto;
+
+}
+
+button{
+    background-color: #C0C0C0;
+    border: 2px solid white;
+    border-radius: 30px;
+    color: white;
+    cursor: pointer;
+    font-size: 20px;
+    /*margin-top: 20px;*/
+    /*padding: 15px 30px;*/
+    /*text-transform: uppercase;*/
+    /*transition: all 200ms;*/
+}
+
+a {
+    background-color: #C0C0C0;
+    border: 2px solid white;
+    border-radius: 25px;
+    color: white;
+    cursor: pointer;
+    font-size: 20px;
+}

@@ -1,0 +1,60 @@
+<!--<h1 class="text-primary">Annonces </h1>-->
+
+<!--<div *ngFor="let a of  annonces" >-->
+
+  <!--<div class="panel">-->
+
+    <!--<div class="panel-header">-->
+      <!--{{a.title}}-->
+    <!--</div>-->
+
+    <!--<div class="panel-body">-->
+      <!--{{a.description}}-->
+    <!--</div>-->
+
+  <!---->
+    <!--&lt;!&ndash;<a href="/edit-post/{{a.id}}" class="btn btn-success">Edit Post</a>&ndash;&gt;-->
+
+    <!--&lt;!&ndash;<button (click)="deletePost(a.id)" class="btn btn-primary" >Delete</button>&ndash;&gt;-->
+  <!--</div>-->
+
+
+<!--</div>-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <h2>Publications </h2> <br> <br>
+  <div class="panel-group">
+
+    <div *ngFor="let a of  annonces" >
+      <div class="panel panel-success">
+        <div class="panel-heading">Title : {{a.title}} </div>
+          <div class="panel-body"> Category : {{a.category}} </div>
+          <div class="panel-body"> Phone N° : {{a.phone}}</div>
+        <div class="panel-body"> Description : {{a.description}}</div>
+          <div class="panel-body"> City : {{a.city}}</div>
+          <div class="panel-body"> Picture : {{a.picture}}</div>
+      </div>
+        <a routerLink="/edit-annonce/{{a.id}}" class="btn btn-success">Edit Publication</a>
+
+        <button (click)="deleteAnnonce(a.id)" class="btn btn-danger" >Delete</button>
+      
+    </div>
+
+  </div>
+</div>
+
+</body>
+
+</html>
