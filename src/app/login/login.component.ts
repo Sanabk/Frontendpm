@@ -1,22 +1,6 @@
-// import { Component, OnInit } from '@angular/core';
-//
-// @Component({
-//   selector: 'app-login',
-//   templateUrl: './login.component.html',
-//   styleUrls: ['./login.component.css']
-// })
-// export class LoginComponent implements OnInit {
-//
-//   constructor() { }
-//
-//   ngOnInit() {
-//   }
-//
-// }
-//
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import {AuthService} from '../auth.service';
+import {AuthService} from '../Services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -49,7 +33,7 @@ export class LoginComponent implements OnInit {
           console.log(result);
           this.router.navigate(['/annonce']);
 
-        }, loginError => this.error = loginError.message + ' : verify  your username or password !  ');
+        }, loginError => this.error = loginError.message + ' : Please verify  your username or password !  ');
 
 
   }

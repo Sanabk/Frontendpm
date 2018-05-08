@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Annonce} from "../Annonce";
-import {AnnonceService} from "../annonce.service";
+import {Annonce} from '../Models/Annonce';
+import {AnnonceService} from '../Services/annonce.service';
 
 @Component({
   selector: 'app-annonce',

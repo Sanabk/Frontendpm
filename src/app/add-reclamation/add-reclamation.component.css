@@ -37,13 +37,13 @@ input {
     transition: box-shadow .5s ease;
 }
 option{
-    background-color:#f60;
+    background-color:darkgrey;
     opacity:0.9;
-    color:white !important;
+    color:black !important;
 }
 select{
     background-color:transparent !important;
-    color:#fff !important;
+    color:black !important;
     border-top:1px inset gray !important;
     border-left:1px inset gray !important;
 }
@@ -77,6 +77,18 @@ body{
     min-width:100%;
     display:flex;
     align-items:center;
+}
+textarea{
+
+    background: transparent;
+    color: black;
+    padding: 10px 22px;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.6s;
+    cursor: pointer;
+
 }
 .btn {
 

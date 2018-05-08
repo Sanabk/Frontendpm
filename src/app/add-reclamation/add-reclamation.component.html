@@ -5,6 +5,8 @@
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAc86thRdYwFmyj-SjdErgzfynucza4eG8&signed_in=true&libraries=places&callback=initAutocomplete"
+        async defer></script>
 <!------ Include the above in your HEAD tag ---------->
 
 <!DOCTYPE html>
@@ -38,13 +40,26 @@
 </nav>
 <div class="container cont">
   <div class="col-md-6 col-sm-8 col-xs-12 col-md-offset-3 col-sm-offset-2 main">
-    <form action="#" method="post" class="form-horizontal" (submit)="editAnnonce(title,description,category,phone,city,picture)">
 
-      <legend>Edit Service </legend>
+    <form action="#" method="post" class="form-horizontal" (submit)="addReclamation(title,context)">
+
+      <legend>Add Service</legend>
       <div class="form-group">
         <label class="col-md-3 control-label">Title :</label>
         <div class="col-md-9">
-          <input type="text" class="form-control" placeholder="Add Title" [(ngModel)]="title" name="title" required >
+          <input type="text" id="name" name="name" class="form-control"
+                 required
+                 [(ngModel)]="title" #name="ngModel" >
+
+          <div *ngIf="name.invalid && (name.dirty || name.touched)"
+               class="alert alert-danger">
+
+            <div *ngIf="name.errors.required">
+              Title is required.
+            </div>
+
+
+          </div>
         </div>
       </div>
 
@@ -52,41 +67,25 @@
       <div class="form-group">
         <label class="col-md-3 control-label">Description :</label>
         <div class="col-md-9">
-          <input type="text" class="form-control" placeholder="Add Description" [(ngModel)]="description" name="description" required>
-        </div>
-      </div>
-      <div class="form-group">
-        <label class="col-md-3 control-label">Phone Number :</label>
-        <div class="col-md-9">
-          <input type="text" class="form-control" placeholder="Add Phone Number" [(ngModel)]="phone" name="number" required>
-        </div>
+          <div class="col-md-9">
+            <textarea  class="form-control" placeholder="Add Message Here..." id="description" name="description"
+                   required
+                   [(ngModel)]="context" #name="ngModel" >Add Message Here...</textarea>
 
-      </div>
-      <div class="form-group">
-        <label class="col-md-3 control-label">Category :</label>
-        <div class="col-md-9">
-          <select class="form-control" id="power" required [(ngModel)]="category" name="category">
-            <option *ngFor="let c of  categories" [value]="c.name" >{{c.name}}</option>
-          </select>
-        </div>
-      </div>
-      <div class="form-group">
-        <label class="col-md-3 control-label">Address :</label>
-        <div class="col-md-9">
-          <input type="text" class="form-control" placeholder="Location" name="city" id="city" #address [(ngModel)]="city" required>
-          <agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom">
-            <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
-          </agm-map>
-          <!--<input type="text" class="form-control" placeholder="Add City" id="city" required [(ngModel)]="city" name="city"  >-->
+            <div *ngIf="name.invalid && (name.dirty || name.touched)"
+                 class="alert alert-danger">
+
+              <div *ngIf="name.errors.required">
+                Context is required.
+              </div>
+
+            </div>
+          </div>
         </div>
       </div>
 
-      <div class="form-group">
-        <label class="col-md-3 control-label">Picture :</label>
-        <div class="col-md-9">
-          <input type="text" class="form-control"  [(ngModel)]="picture" name="picture" required >
-        </div>
-      </div>
+
+
       <!--<div class="form-group">-->
       <!--<label class="col-md-3 control-label">City :</label>-->
       <!--<div class="col-md-9">-->

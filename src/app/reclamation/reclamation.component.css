@@ -1,0 +1,29 @@
+body{
+    background-repeat: no-repeat;
+    background-image: linear-gradient(rgb(104, 145, 162), rgb(255,255,255));
+    background-blend-mode:  multiply;
+    background-size:auto;
+}
+
+html, body {
+    height:100%;
+    position: absolute; top: 0; left: 0; right: 0;
+
+}
+
+
+
+
+button {
+
+
+    color: black;
+    padding: 10px 22px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.6s;
+    cursor: pointer;
+}
+

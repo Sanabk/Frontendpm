@@ -1,44 +1,126 @@
-<h1>Add Publication</h1>
 
 
 
-<form (submit)="addAnnonce(title,description,category,phone,city,picture)" class="well ">
 
-  <div class="form-group">
-    <label>Title:</label>
-    <input type="text" class="form-control" placeholder="add title" [(ngModel)]="title" name="title" >
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand"   routerLink="/annonce">Services List</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <!--<li class="nav-item active">-->
+          <!--<a class="nav-link" href="#">Home-->
+            <!--<span class="sr-only">(current)</span>-->
+          <!--</a>-->
+        <!--</li>-->
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/add-annonce">Add New Service</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/reclamation">Reclamation</a>
+        </li>
+
+      </ul>
+    </div>
   </div>
+</nav>
+<div class="container cont">
+  <div class="col-md-6 col-sm-8 col-xs-12 col-md-offset-3 col-sm-offset-2 main">
+    <form action="#" method="post" class="form-horizontal" (submit)="addAnnonce(title,description,category,phone,city,picture)">
 
-  <div class="form-group">
-    <label>Category:</label>
-    <input type="text" class="form-control" placeholder="add category" [(ngModel)]="category" name="category" >
+      <legend>Add Service</legend>
+      <div class="form-group">
+        <label class="col-md-3 control-label">Title :</label>
+        <div class="col-md-9">
+          <input type="text" class="form-control" placeholder="Add Title" [(ngModel)]="title" name="title" required >
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <label class="col-md-3 control-label">Description :</label>
+        <div class="col-md-9">
+          <input type="text" class="form-control" placeholder="Add Description" [(ngModel)]="description" name="description" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-3 control-label">Phone Number :</label>
+        <div class="col-md-9">
+          <input type="text" class="form-control" placeholder="Add Phone Number" [(ngModel)]="phone" name="number" required>
+        </div>
+
+      </div>
+      <div class="form-group">
+        <label class="col-md-3 control-label">Category :</label>
+        <div class="col-md-9">
+        <select class="form-control" id="power" required [(ngModel)]="category" name="category">
+          <option *ngFor="let c of  categories" [value]="c.name" >{{c.name}}</option>
+        </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-3 control-label">Address :</label>
+        <div class="col-md-9">
+          <input type="text" class="form-control" placeholder="Location" name="city" id="city" #address [(ngModel)]="city" required>
+          <agm-map [latitude]="latitude" [longitude]="longitude" [scrollwheel]="false" [zoom]="zoom">
+            <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
+          </agm-map>
+        <!--<input type="text" class="form-control" placeholder="Add City" id="city" required [(ngModel)]="city" name="city"  >-->
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-md-3 control-label">Picture :</label>
+        <div class="col-md-9">
+          <input type="text" class="form-control"  [(ngModel)]="picture" name="picture" required >
+        </div>
+      </div>
+      <!--<div class="form-group">-->
+        <!--<label class="col-md-3 control-label">City :</label>-->
+        <!--<div class="col-md-9">-->
+          <!--<select class="form-control" [(ngModel)]="city" required>-->
+            <!--<option>Tunis</option>-->
+            <!--<option>Sousse</option>-->
+            <!--<option>Monastir</option>-->
+            <!--<option>Beja</option>-->
+            <!--<option>Kef</option>-->
+            <!--<option>Jandouba</option>-->
+          <!--</select>-->
+        <!--</div>-->
+      <!--</div>-->
+
+      <div *ngFor="let error of errors" class="alert alert-danger">
+        <div>There is an error in :{{error.field}} field</div>
+        <div>{{error.message}}</div>
+      </div>
+
+  <button type="submit" class="btn btn-primary " >Save</button>
+  <button type="reset" class="btn btn-danger"> Cancel</button>
+
+    </form>
   </div>
+</div>
 
-  <div class="form-group">
-    <label>Description:</label>
-    <input type="text" class="form-control" placeholder="add description" [(ngModel)]="description" name="description" >
-  </div>
+<script>
+    $(document).ready(function(){
 
-  <div class="form-group">
-    <label>City:</label>
-    <input type="text" class="form-control" placeholder="add city" [(ngModel)]="city" name="city" >
-  </div>
+    });
+</script>
+</body>
+</html>
 
-  <div class="form-group">
-    <label>Phone:</label>
-    <input type="text" class="form-control" placeholder="add phone" [(ngModel)]="phone" name="phone" >
-  </div>
 
-  <div class="form-group">
-    <label>Picture:</label>
-    <input type="text" class="form-control" placeholder="add picture" [(ngModel)]="picture" name="picture" >
-  </div>
 
-  <div *ngFor="let error of errors" class="alert alert-danger">
-    <div>There is an error in :{{error.field}} field</div>
-    <div>{{error.message}}</div>
-  </div>
 
-  <button type="submit" class="btn " >Save</button>
-
-</form>
