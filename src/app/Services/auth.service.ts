@@ -16,31 +16,32 @@ export class AuthService {
 
 
 
-  login(username: string, password: string): Observable<boolean> {
+  login(mail: string, password: string): Observable<boolean> {
     let headers = new Headers();
     headers.append('content-type', 'application/x-www-form-urlencoded');
     let body = new URLSearchParams();
-    body.set('username', username);
+    body.set('mail', mail);
     body.set('password', password);
 
 
     //noinspection TypeScriptUnresolvedFunction
-    return this.http.post('http://127.0.0.1:8001/api/login_check', body ,{headers : headers} )
+    return this.http.post('http://127.0.0.1:8001/user/login', body ,{headers : headers} )
         .map((response: Response) => {
           // login successful if there's a jwt token in the response
-          const token = response.json() && response.json().token;
+          const token = response.json() && response.json().response.token;
           if (token) {
             // set token property
             this.token = token;
 
             // store username and jwt token in local storage to keep user logged in between page refreshes
-            localStorage.setItem('currentUser', JSON.stringify({ username: username, token: token }));
+            localStorage.setItem('currentUser', JSON.stringify({ mail: mail, token: token }));
 
             // return true to indicate successful login
             return true;
           } else {
             // return false to indicate failed login
-            return false;
+              console.log("test1")
+              return false;
           }
         }).catch(this.handelError);
   }

@@ -9,8 +9,9 @@ import {AuthService} from '../Services/auth.service';
 })
 export class LoginComponent implements OnInit {
 
+  emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
 
-  username: string;
+  mail: string;
   password: string;
   error: string;
 
@@ -27,10 +28,10 @@ export class LoginComponent implements OnInit {
     e.preventDefault();
 
 
-    this.authenticationService.login(this.username, this.password)
+    this.authenticationService.login(this.mail, this.password)
         .subscribe(result => {
 
-          console.log(result);
+          console.log("test"+result);
           this.router.navigate(['/annonce']);
 
         }, loginError => this.error = loginError.message + ' : Please verify  your username or password !  ');
