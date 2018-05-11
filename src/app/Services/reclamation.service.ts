@@ -10,7 +10,7 @@ import {Reclamation} from '../Models/Reclamation';
 @Injectable()
 export class ReclamationService {
 
-  private uri= 'http://127.0.0.1:8001/api/reclamations';
+  private uri= 'http://127.0.0.1:8001/reclamations';
 
     constructor(private http: Http, private authenticationService: AuthService  ) {}
 

@@ -37,10 +37,11 @@ export class AuthService {
             localStorage.setItem('currentUser', JSON.stringify({ mail: mail, token: token }));
 
             // return true to indicate successful login
+              console.log(this.token)
             return true;
           } else {
             // return false to indicate failed login
-              console.log("test1")
+             // console.log("test1")
               return false;
           }
         }).catch(this.handelError);

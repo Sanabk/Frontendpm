@@ -23,6 +23,7 @@ export class RegisterComponent implements OnInit {
     user = {username: username, email: email, type: type, password: password};
     this._registerService.addUsers(user).subscribe(( result => {
 
+
       this.router.navigate(['/login']);
 
     }), addError => this.errors = addError);
