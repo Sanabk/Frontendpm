@@ -10,13 +10,19 @@ import {RegisterService} from '../Services/register.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  username: string ;
+  username: any ='' ;
   email: string;
   type: string;
   password: string;
   errors = [];
-
+  mail: string;
   constructor(private _registerService: RegisterService , private router: Router ) { }
+
+
+  ngOnInit() {
+
+
+  }
   addUser(username, email, type, password) {
 
     let user: any;
@@ -27,10 +33,6 @@ export class RegisterComponent implements OnInit {
       this.router.navigate(['/login']);
 
     }), addError => this.errors = addError);
-
-  }
-
-  ngOnInit() {
 
   }
 

@@ -55,8 +55,8 @@
                 <h1 class="logo__text">ProMatching</h1>
             </div>
             <div class="thumbnail__content text-center">
-                <h1 class="heading--primary">Welcome</h1>
-                <h2 class="heading--secondary">Are you ready to join our site?</h2>
+                <!--<h1 class="heading&#45;&#45;prima ry">Welcome</h1>-->
+                <!--<h2 class="heading&#45;&#45;secondary">Are you ready to join the elite?</h2>-->
             </div>
             <div class="thumbnail__links">
                 <ul class="list-inline m-b-0 text-center">
@@ -72,33 +72,46 @@
             <div class="signup__overlay"></div>
         </div>
         <div class="container__child signup__form">
-            <form action="#">
+            <form  action="#" (submit)="addUser(username,mail , type , password)">
+
                 <div class="form-group">
                     <label for="username">Username</label>
-                    <input class="form-control" type="text" name="username" id="username" placeholder="Username" required />
+                    <input class="form-control" type="text" name="username"  placeholder="Username " required [(ngModel)]="username"   />
                 </div>
                 <div class="form-group">
-                    <label for="email">Email</label>
-                    <input class="form-control" type="text" name="email" id="email" placeholder="exemple@gmail.com" required />
+                    <label for="username">E-mail </label>
+                    <input class="form-control" type="text" name="username" id="username" placeholder="Username " required [(ngModel)]="mail" [pattern]="emailPattern"  />
                 </div>
                 <div class="form-group">
-                    <label for="password">Password</label>
-                    <input class="form-control" type="password" name="password" id="password" placeholder="********" required />
+                    <label for="username">Type </label>
+                    <select [(ngModel)]="type" class="form-control">
+                        <option value="Particular"> Particular</option>
+                        <option value="Professional"> Professional</option>
+
+                    </select>
                 </div>
+
                 <div class="form-group">
-                    <label for="passwordRepeat">Repeat Password</label>
-                    <input class="form-control" type="password" name="passwordRepeat" id="passwordRepeat" placeholder="********" required />
+                    <label for="password">Password{{password}}</label>
+                    <input class="form-control" type="password" name="password" id="password" placeholder="********" required [(ngModel)]="password" />
                 </div>
+                <div  class="alert alert-danger"></div>
+
                 <div class="m-t-lg">
                     <ul class="list-inline">
                         <li>
-                            <input class="btn btn--form" type="submit" value="Register" />
+
+                            <input class="btn btn--form" type="submit" value="Login" />
                         </li>
+                        <br>
                         <li>
-                            <a class="signup__link" routerLink="/login">I am already a member</a>
+                            <a class="signup__link" routerLink="/login"></a>
                         </li>
+
+
                     </ul>
                 </div>
+
             </form>
         </div>
     </div>

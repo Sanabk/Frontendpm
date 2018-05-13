@@ -9,7 +9,7 @@ import {User} from "../Models/User";
 @Injectable()
 export class RegisterService {
 
-  private uri = 'http://localhost:8001/register';
+  private uri = 'http://localhost:8001/user/inscription';
 
   constructor(private http: Http,) {}
 

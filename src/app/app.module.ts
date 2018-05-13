@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { AnnonceComponent } from './annonce/annonce.component';
 import { AddAnnonceComponent } from './add-annonce/add-annonce.component';
@@ -61,6 +60,7 @@ const routes: Routes = [
     BrowserModule,
     RouterModule.forRoot( routes ),
     HttpModule,
+      HttpClientModule,
     FormsModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCrxo9oHA3cqfzWKXm8q-P7mkG01NsPISc',
