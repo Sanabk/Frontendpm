@@ -17,7 +17,9 @@ export class ReclamationService {
   addReclamation(reclamation: Reclamation) {
     const  headers = new Headers();
     headers.append('content-type', 'application/json');
-    headers.append('Authorization', 'Bearer ' + this.authenticationService.token);
+    headers.append('X-Auth-Token', this.authenticationService.token.value
+        // .value
+    );
     //noinspection TypeScriptUnresolvedFunction
     return this.http.post(this.uri, JSON.stringify(reclamation), {headers : headers}).map(res => res.json()).catch(this.handelError);
   }
@@ -29,7 +31,7 @@ export class ReclamationService {
   }
 
   getReclamation(): Observable<any[]> {
-    const headers = new Headers({ 'Authorization': 'Bearer ' + this.authenticationService.token });
+    const headers = new Headers({ 'X-Auth-Token': this.authenticationService.token.value });
     //noinspection TypeScriptUnresolvedFunction
     return  this.http.get(this.uri , {headers : headers}).map(res => <Reclamation[]> res.json() ).catch(this.handelError);
 

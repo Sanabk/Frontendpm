@@ -14,6 +14,7 @@ export class LoginComponent implements OnInit {
   mail: string;
   password: string;
   error: string;
+  user : any;
 
   constructor( private router: Router,
                private authenticationService: AuthService) {}
@@ -32,7 +33,16 @@ export class LoginComponent implements OnInit {
         .subscribe(result => {
 
           console.log("test"+result);
-          this.router.navigate(['/annonce']);
+          this.user = result;
+            if(typeof (Storage) !== "undefined"){
+                sessionStorage.setItem('type' , this.user.type);
+            }
+          if(this.user.type == 'professionnel') {
+
+            this.router.navigate(['/annonce']);
+          }else{
+            this.router.navigate(['/homepage']);
+          }
 
         }, loginError => this.error = loginError.message + ' : Please verify  your username or password !  ');
 

@@ -7,7 +7,7 @@ import 'rxjs/add/observable/throw';
 @Injectable()
 export class AuthService {
 
-  public token: string;
+  public token: any;
 
   constructor(private http: Http) {
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));

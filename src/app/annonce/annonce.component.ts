@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Annonce} from '../Models/Annonce';
 import {AnnonceService} from '../Services/annonce.service';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-annonce',
@@ -12,7 +13,7 @@ export class AnnonceComponent implements OnInit {
   annonces: Array<Annonce>= [] ;
 
   errorMessage: string;
-  constructor(private _annonceService: AnnonceService) { }
+  constructor(private _annonceService: AnnonceService , private router : Router) { }
 
   getAnnonce() {
     this._annonceService.getAnnonce().subscribe(
@@ -21,6 +22,12 @@ export class AnnonceComponent implements OnInit {
   }
 
   ngOnInit() {
+    // if(typeof (Storage) !== "undefined"){
+    //   if(sessionStorage.getItem('type') != 'professionnel'){
+    //     this.router.navigate(['/homepage']);
+    //   }
+    // }
+
     this.getAnnonce();
   }
 

@@ -17,7 +17,7 @@ export class CategoryService {
   constructor(private http: Http, private authenticationService: AuthService  ) {}
 
   getCategory(): Observable<any[]> {
-    const headers = new Headers({ 'Authorization': 'Bearer ' + this.authenticationService.token });
+    const headers = new Headers({ 'X-Auth-Token': this.authenticationService.token.value });
     //noinspection TypeScriptUnresolvedFunction
     return  this.http.get(this.uri , {headers : headers}).map(res => <Category[]> res.json() ).catch(this.handelError);
 

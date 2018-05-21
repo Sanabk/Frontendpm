@@ -1,0 +1,31 @@
+<div class="container">
+
+  <div class="panel-group">
+    <div id="imaginary_container">
+      <div class="input-group stylish-input-group">
+        <input type="text" class="form-control"  placeholder="Search" [(ngModel)]="queryString">
+        <span class="input-group-addon">
+                <button type="submit">
+                    <span class="glyphicon glyphicon-search"></span>
+                </button>
+            </span>
+      </div>
+    </div>
+    <div *ngFor="let a of  annonces | filter: queryString : 'title'" >
+      <div class="panel panel-success">
+        <div class="panel-heading">Title : {{a.title}} </div>
+        <div class="panel-body"> Category : {{a.category.name}} </div>
+        <div class="panel-body"> Phone N° : {{a.phone}}</div>
+        <div class="panel-body"> Description : {{a.description}}</div>
+        <div class="panel-body"> City : {{a.city}}</div>
+        <div class="panel-body"> Picture : {{a.picture}}</div>
+      </div>
+      <button routerLink="/edit-annonce/{{a.id}}" class="btn btn-success">Edit Service</button>
+
+
+      <button (click)="deleteAnnonce(a.id)" class="btn btn-danger" >Delete</button>
+
+    </div>
+
+  </div>
+</div>

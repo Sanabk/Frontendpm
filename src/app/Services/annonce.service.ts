@@ -18,16 +18,29 @@ export class AnnonceService {
   constructor(private http: Http, private authenticationService: AuthService  ) {}
 
   getAnnonce(): Observable<any[]> {
-    const headers = new Headers({ 'X-Auth-Token' : this.authenticationService.token });
+    const headers = new Headers({ 'X-Auth-Token' : this.authenticationService.token.value
+        // .value
+    });
+    // console.log(this.authenticationService.token.value);
     //noinspection TypeScriptUnresolvedFunction
     return  this.http.get(this.uri , {headers : headers}).map(res => <Annonce[]> res.json() ).catch(this.handelError);
+
+  }
+
+  getAllAnnonce(): Observable<any[]> {
+    const headers = new Headers({ 'X-Auth-Token' : this.authenticationService.token.value
+      // .value
+    });
+    // console.log(this.authenticationService.token.value);
+    //noinspection TypeScriptUnresolvedFunction
+    return  this.http.get(this.uri + '/' + 'all' , {headers : headers}).map(res => <Annonce[]> res.json() ).catch(this.handelError);
 
   }
 
   addAnnonce(annonce: Annonce) {
     const  headers = new Headers();
     headers.append('content-type', 'application/json');
-    headers.append('X-Auth-Token' , this.authenticationService.token);
+    headers.append('X-Auth-Token' , this.authenticationService.token.value);
     //noinspection TypeScriptUnresolvedFunction
     return this.http.post(this.uri, JSON.stringify(annonce), {headers : headers}).map(res => res.json()).catch(this.handelError);
   }
@@ -37,7 +50,7 @@ export class AnnonceService {
   editAnnonce(annonce: Annonce , id) {
     const  headers = new Headers();
     headers.append('content-type', 'application/json');
-    headers.append('X-Auth-Token' , this.authenticationService.token);
+    headers.append('X-Auth-Token' , this.authenticationService.token.value);
     //noinspection TypeScriptUnresolvedFunction
     return this.http.post(this.uri + '/' + id, JSON.stringify(annonce), {headers : headers}).map(res => res.json()).catch(this.handelError);
   }
@@ -45,8 +58,16 @@ export class AnnonceService {
 
   deleteAnnonce(id: any) {
     const  headers = new Headers();
-    headers.append('X-Auth-Token' , this.authenticationService.token);
+    headers.append('X-Auth-Token' , this.authenticationService.token.value);
     return this.http.delete(this.uri + '/' + id, {headers : headers}).map(res => res.json());
+  }
+  getAnnonceById(ids : any){
+
+    const  headers = new Headers();
+    headers.append('X-Auth-Token' , this.authenticationService.token.value);
+    //noinspection TypeScriptUnresolvedFunction
+    return this.http.get(this.uri+'/'+ids , {headers : headers})
+        .map(res=>res.json()).catch(this.handelError);;
   }
 
 
@@ -55,5 +76,6 @@ export class AnnonceService {
     return Observable.throw(error.json().errors || 'server error');
 
   }
+
 
 }

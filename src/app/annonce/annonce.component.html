@@ -77,7 +77,7 @@
     <div *ngFor="let a of  annonces | filter: queryString : 'title'" >
       <div class="panel panel-success">
         <div class="panel-heading">Title : {{a.title}} </div>
-          <div class="panel-body"> Category : {{a.category}} </div>
+          <div class="panel-body"> Category : {{a.category.name}} </div>
           <div class="panel-body"> Phone N° : {{a.phone}}</div>
         <div class="panel-body"> Description : {{a.description}}</div>
           <div class="panel-body"> City : {{a.city}}</div>

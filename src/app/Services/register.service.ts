@@ -17,9 +17,10 @@ export class RegisterService {
 
   addUsers(user: User) {
     const headers = new Headers();
-    headers.append('content-type', 'application/json');
+    headers.append('Content-type', 'application/json');
+    console.log(user);
     //noinspection TypeScriptUnresolvedFunction
-    return this.http.post(this.uri, JSON.stringify(User), {headers: headers}).map(res => res.json()).catch(this.handelError);
+    return this.http.post(this.uri, JSON.stringify(user), {headers: headers}).map(res => res.json()).catch(this.handelError);
   }
   private handelError(error: Response) {
 

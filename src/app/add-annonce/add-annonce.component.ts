@@ -14,9 +14,7 @@ import {} from '@types/googlemaps';
 export class AddAnnonceComponent implements OnInit {
   @ViewChild('address') public searchElement: ElementRef;
 
-  public latitude: number;
-  public longitude: number;
-  public zoom: number;
+
   title: string;
   description: string;
   category: string;
@@ -31,7 +29,10 @@ export class AddAnnonceComponent implements OnInit {
   constructor(private mapsAPILoader: MapsAPILoader, private ngZone: NgZone, private _annonceService: AnnonceService , private router: Router , private _categoryService: CategoryService) { }
   getCategory() {
     this._categoryService.getCategory().subscribe(
-        categories => this.categories = categories, error => this.errorMessage = <any> error
+        categories => {
+          this.categories = categories, error => this.errorMessage = <any> error;
+
+        }
     );
   }
   addAnnonce(title, description, category, phone, city, picture) {
@@ -61,23 +62,13 @@ export class AddAnnonceComponent implements OnInit {
               if (place.geometry === undefined || place.geometry === null) {
                 return;
               }
-              this.latitude = place.geometry.location.lat();
-              this.longitude = place.geometry.location.lng();
-              this.zoom = 12;
+
             });
           });
         }
     );
   }
-  private setCurrentPosition() {
-    if ("geolocation" in navigator) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        this.latitude = position.coords.latitude;
-        this.longitude = position.coords.longitude;
-        this.zoom = 12;
-      });
-    }
-  }
+
 }
 
 
