@@ -28,9 +28,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
+ 
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
@@ -74,21 +76,32 @@
             </span>
       </div>
     </div>
-    <div *ngFor="let a of  annonces | filter: queryString : 'title'" >
-      <div class="panel panel-success">
-        <div class="panel-heading">Title : {{a.title}} </div>
-          <div class="panel-body"> Category : {{a.category.name}} </div>
-          <div class="panel-body"> Phone N° : {{a.phone}}</div>
-        <div class="panel-body"> Description : {{a.description}}</div>
-          <div class="panel-body"> City : {{a.city}}</div>
-          <div class="panel-body"> Picture : {{a.picture}}</div>
-      </div>
-        <button routerLink="/edit-annonce/{{a.id}}" class="btn btn-success">Edit Service</button>
 
+    <table class="table table-striped custab">
+      <thead>
+      <a href="#" class="btn btn-primary btn-xs pull-right"><b>+</b> Add new categories</a>
+      <tr>
+        <th>Title</th>
+        <th>Category</th>
+        <th>Phone N°</th>
+        <th>Description</th>
+        <th>Adress</th>
+        <th>Email</th>
+        <th class="text-center">Action</th>
+      </tr>
+      </thead>
+      <tr *ngFor="let a of  annonces | filter: queryString : 'title'">
+        <td> {{a.title}}</td>
+        <td>{{a.category.name}}</td>
+        <td>{{a.phone}}</td>
+        <td> {{a.description}}</td>
+        <td>{{a.city}}</td>
+        <td>{{a.picture}}</td>
+        <td class="text-center"><a class='btn btn-info btn-xs' routerLink="/edit-annonce/{{a.id}}"><span class="glyphicon glyphicon-edit"></span> Edit</a>
+          <a (click)="deleteAnnonce(a.id)" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> Del</a></td>
+      </tr>
 
-        <button (click)="deleteAnnonce(a.id)" class="btn btn-danger" >Delete</button>
-
-    </div>
+    </table>
 
   </div>
 </div>

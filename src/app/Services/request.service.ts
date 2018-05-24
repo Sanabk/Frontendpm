@@ -5,34 +5,32 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/throw';
 import {Calendar} from "../Models/Calendar";
+import {AuthService} from "./auth.service";
 
 @Injectable()
 export class RequestService {
-  uri='';
-  constructor( private http : Http) { }
+  uri='http://127.0.0.1:8001';
+  constructor( private http : Http , private authenticationService: AuthService) { }
 
 
-  getAll(){
-    const headers = new Headers();
-
-    //noinspection TypeScriptUnresolvedFunction
-    return  this.http.get(this.uri , {headers : headers}).map(res =>res.json()).catch(this.handelError);
-
-  }
 
   Accepter(id : any){
       const headers = new Headers();
       headers.append('content-type', 'application/json');
+        let x= {'id' :id};
+    headers.append( 'X-Auth-Token', this.authenticationService.token.value);
       //noinspection TypeScriptUnresolvedFunction
-      return this.http.post(this.uri, JSON.stringify(id), {headers: headers}).map(res => res.json()).catch(this.handelError);
+      return this.http.post(this.uri+'/valid-req', JSON.stringify(x), {headers: headers}).map(res => res).catch(this.handelError);
 
   }
 
   Refuser(id : any){
     const headers = new Headers();
     headers.append('content-type', 'application/json');
+
+    headers.append( 'X-Auth-Token', this.authenticationService.token.value);
     //noinspection TypeScriptUnresolvedFunction
-    return this.http.post(this.uri, JSON.stringify(id), {headers: headers}).map(res => res.json()).catch(this.handelError);
+    return this.http.delete(this.uri+'/delete/'+id, {headers: headers}).map(res => res.json()).catch(this.handelError);
 
   }
   private handelError(error: Response) {

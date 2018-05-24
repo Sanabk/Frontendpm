@@ -23,39 +23,39 @@ export class ProfileComponent implements OnInit {
 
 
   save(){
-    if(this.monday.day ){
-      this.monday.day="monday";
-      this.calendarService.addCalendar(this.monday)
+    if(this.monday.Day ){
+      this.monday.Day="monday";
+      this.calendarService.addDispo(this.monday)
           .subscribe(res=>console.log("added"));
     }
-    if(this.tuesday.day){
-      this.tuesday.day="tuesday";
-      this.calendarService.addCalendar(this.tuesday)
+    if(this.tuesday.Day){
+      this.tuesday.Day="tuesday";
+      this.calendarService.addDispo(this.tuesday)
           .subscribe(res=>console.log("added"));
     }
-    if(this.wed.day){
-      this.wed.day="wednesday";
-      this.calendarService.addCalendar(this.wed)
+    if(this.wed.Day){
+      this.wed.Day="wednesday";
+      this.calendarService.addDispo(this.wed)
           .subscribe(res=>console.log("added"));
     }
-    if(this.thur.day){
-      this.thur.day="thursday";
-      this.calendarService.addCalendar(this.thur)
+    if(this.thur.Day){
+      this.thur.Day="thursday";
+      this.calendarService.addDispo(this.thur)
           .subscribe(res=>console.log("added"));
     }
-    if(this.fri.day){
-      this.fri.day="friday";
-      this.calendarService.addCalendar(this.fri)
+    if(this.fri.Day){
+      this.fri.Day="friday";
+      this.calendarService.addDispo(this.fri)
           .subscribe(res=>console.log("added"));
     }
-    if(this.sat.day){
-      this.sat.day="saturday";
-      this.calendarService.addCalendar(this.sat)
+    if(this.sat.Day){
+      this.sat.Day="saturday";
+      this.calendarService.addDispo(this.sat)
           .subscribe(res=>console.log("added"));
     }
-    if(this.sun.day){
-      this.sun.day="sunday";
-      this.calendarService.addCalendar(this.sun)
+    if(this.sun.Day){
+      this.sun.Day="sunday";
+      this.calendarService.addDispo(this.sun)
           .subscribe(res=>console.log("added"));
     }
   }

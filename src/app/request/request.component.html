@@ -1,3 +1,27 @@
-<p>
-  request works!
-</p>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container">
+    <div class="row col-md-12  custyle">
+        <table class="table table-striped custab">
+            <thead>
+
+            <tr>
+                <th>Subject</th>
+                <th>From</th>
+                <th>TO</th>
+                <th class="text-center">Action</th>
+            </tr>
+            </thead>
+            <tr *ngFor=" let evt of events">
+                <td>{{evt.subject}}</td>
+                <td>{{evt.fromo}}</td>
+                <td>{{evt.toon}}</td>
+                <td class="text-center"><a class='btn btn-success btn-xs' (click)="Accepter(evt.id)"><span class="glyphicon glyphicon-ok"></span> Accept</a> <a (click)="Refuser(evt.id)" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> Refuse</a></td>
+            </tr>
+
+        </table>
+    </div>
+</div>

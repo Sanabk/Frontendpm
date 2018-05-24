@@ -21,6 +21,7 @@ export class HomepageComponent implements OnInit {
 
 
   ngOnInit() {
+    console.log('ok');
     this.getAllAnnonce();
 
   }

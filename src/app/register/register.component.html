@@ -33,12 +33,12 @@
                 </div>
                 <div class="form-group">
                     <label >E-mail </label>
-                    <input class="form-control" type="text"  placeholder="Mail " required [(ngModel)]="mail"  [ngModelOptions]="{standalone: true}"   />
+                    <input class="form-control" type="email"  placeholder="Mail " required [(ngModel)]="mail"  [ngModelOptions]="{standalone: true}"   />
                 </div>
                 <div class="form-group">
                     <label >Type </label>
-                    <select [(ngModel)]="type" class="form-control"  [ngModelOptions]="{standalone: true}">
-                        <option value="Particular"> Particular</option>
+                    <select class="form-control" [(ngModel)]="type" [ngModelOptions]="{standalone: true}">
+                        <option value="Particular" > Particular</option>
                         <option value="Professional"> Professional</option>
 
                     </select>
@@ -48,13 +48,13 @@
                     <label>Password{{password}}</label>
                     <input class="form-control" type="password"  placeholder="********" required [(ngModel)]="password"  [ngModelOptions]="{standalone: true}" />
                 </div>
-                <div  class="alert alert-danger"></div>
+                <div  class="alert alert-danger" *ngIf="valid"> {{valid}}</div>
 
                 <div class="m-t-lg">
                     <ul class="list-inline">
                         <li>
 
-                            <input class="btn btn--form" type="submit" value="Login" />
+                            <input class="btn btn--form" type="submit" value="Register" />
                         </li>
                         <br>
                         <li>

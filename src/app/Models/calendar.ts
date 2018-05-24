@@ -1,9 +1,10 @@
 export class Calendar {
-    public day :String ;
-    public from1 : String ;
-    public to1 : String ;
-    public from2 : String ;
-    public to2 : String;
+    public Day :String ;
+    public Fromo : String ;
+    public Too : String ;
+
+    public Fromt : String ;
+    public Tot : String;
     constructor() {
 
     }

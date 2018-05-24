@@ -21,12 +21,14 @@ export class CalendarComponent implements OnInit {
 
     this.calendarService.getEvents()
         .subscribe(res=>{
-          console.log(res.result);
+          console.log(res);
           let event : any;
-          for(let value of res.result){
+          for(let value of res){
             console.log(value);
-            event = {'title' : value.subject , 'start' : value.from , 'end' : value.to} ;
-            this.evts.push(event);
+            if(value.valid == "1") {
+                event = {'title': value.subject, 'start': value.fromo, 'end': value.toon};
+                this.evts.push(event);
+            }
 
           }
           console.log(this.evts);

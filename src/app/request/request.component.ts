@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {RequestService} from "../Services/request.service";
+import {CalendarService} from "../Services/calendar.service";
 
 @Component({
   selector: 'app-request',
@@ -8,27 +9,38 @@ import {RequestService} from "../Services/request.service";
 })
 export class RequestComponent implements OnInit {
 
-  constructor(private requestService : RequestService) { }
+  constructor(private calendarService : CalendarService , private requestService : RequestService) { }
 requests:any;
-
+events : any = [];
 demande_id : any;
 
-  ngOnInit() {
-    this.requestService.getAll()
-        .subscribe(res=>console.log("accepter"));
+  ngOnInit(){
+    this.events=[];
+    this.calendarService.getEvents()
+        .subscribe(res=> {
+          for (let value of res) {
+            console.log(value);
+            if (value.valid == "0") {
+
+              this.events.push(value);
+            }
+
+          }
+        });
+
 
   }
 
 
-  Accepter(){
+  Accepter($id){
 
-    this.requestService.Accepter(this.demande_id)
-        .subscribe(res=>console.log("accepter"));
+    this.requestService.Accepter($id)
+        .subscribe(res=>this.ngOnInit());
 
   }
-  Refuser(){
-    this.requestService.Refuser(this.demande_id)
-        .subscribe(res=>console.log("refuser"));
+  Refuser($id){
+    this.requestService.Refuser($id)
+        .subscribe(res=>{this.ngOnInit()});
   }
 
 

@@ -16,6 +16,7 @@ export class RegisterComponent implements OnInit {
   password: string;
   errors = [];
   mail: string;
+  valid : any;
   constructor(private _registerService: RegisterService , private router: Router ) { }
 
 
@@ -25,14 +26,20 @@ export class RegisterComponent implements OnInit {
   }
   addUser(username, email, type, password) {
 
-    let user: any;
-    user = {username: username, mail: email, type: type, password: password};
-    this._registerService.addUsers(user).subscribe( (result => {
 
-      this.router.navigate(['/login']);
+    if ((username == '') || (email == undefined) || (type == undefined) || (password == undefined)) {
 
-    }), addError => this.errors = addError);
+      this.valid = " ......";
+    } else {
+      let user: any;
+      user = {username: username, mail: email, type: type, password: password};
+      this._registerService.addUsers(user).subscribe((result => {
 
+        this.router.navigate(['/login']);
+
+      }), addError => this.errors = addError);
+
+    }
   }
 
 }

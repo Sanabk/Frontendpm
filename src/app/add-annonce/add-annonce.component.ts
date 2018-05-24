@@ -19,11 +19,12 @@ export class AddAnnonceComponent implements OnInit {
   description: string;
   category: string;
   phone: number;
-  city: string;
+  city: string='';
   picture: string;
   errors= <any>[];
   categories: Array<Category>= [];
   errorMessage: string;
+  phone_error : any;
 
   //noinspection JSAnnotator
   constructor(private mapsAPILoader: MapsAPILoader, private ngZone: NgZone, private _annonceService: AnnonceService , private router: Router , private _categoryService: CategoryService) { }
@@ -37,14 +38,27 @@ export class AddAnnonceComponent implements OnInit {
   }
   addAnnonce(title, description, category, phone, city, picture) {
 
-    let annonce: any;
-    annonce = {title: title, description: description, category: category, phone: phone, city: city, picture: picture};
-    this._annonceService.addAnnonce(annonce).subscribe(( result => {
-      console.log(result);
-      this.router.navigate(['/annonce']);
+    console.log(city);
+    if(phone.length != 8) {
+      this.phone_error = "erreur";
 
+      let annonce: any;
+      annonce = {
+        title: title,
+        description: description,
+        category: category,
+        phone: phone,
+        city: city,
+        picture: picture
+      };
+      this._annonceService.addAnnonce(annonce).subscribe(result => {
+        console.log("ok");
+        console.log(result);
+        this.router.navigate(['/annonce']);
 
-    }), addError => this.errors = addError);
+      });
+    }
+
 
   }
 

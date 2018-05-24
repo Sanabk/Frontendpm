@@ -42,7 +42,7 @@ export class AnnonceService {
     headers.append('content-type', 'application/json');
     headers.append('X-Auth-Token' , this.authenticationService.token.value);
     //noinspection TypeScriptUnresolvedFunction
-    return this.http.post(this.uri, JSON.stringify(annonce), {headers : headers}).map(res => res.json()).catch(this.handelError);
+    return this.http.post(this.uri, JSON.stringify(annonce), {headers : headers}).map(res => res).catch(this.handelError);
   }
 
 
@@ -59,7 +59,10 @@ export class AnnonceService {
   deleteAnnonce(id: any) {
     const  headers = new Headers();
     headers.append('X-Auth-Token' , this.authenticationService.token.value);
-    return this.http.delete(this.uri + '/' + id, {headers : headers}).map(res => res.json());
+    //noinspection TypeScriptUnresolvedFunction
+
+    return this.http.delete(this.uri + '/' + id, {headers : headers}).map(res => res.json()).catch(this.handelError);
+
   }
   getAnnonceById(ids : any){
 

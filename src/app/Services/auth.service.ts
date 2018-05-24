@@ -38,7 +38,7 @@ export class AuthService {
 
             // return true to indicate successful login
               console.log(this.token)
-            return true;
+            return this.token.client;
           } else {
             // return false to indicate failed login
              // console.log("test1")

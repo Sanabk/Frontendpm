@@ -31,21 +31,27 @@ export class LoginComponent implements OnInit {
 
     this.authenticationService.login(this.mail, this.password)
         .subscribe(result => {
-
-          console.log("test"+result);
-          this.user = result;
-            if(typeof (Storage) !== "undefined"){
-                sessionStorage.setItem('type' , this.user.type);
+          if (result != false) {
+            console.log("test" + result);
+            this.user = result;
+            if (typeof (Storage) !== "undefined") {
+              sessionStorage.setItem('type', this.user.type);
             }
-          if(this.user.type == 'professionnel') {
+            console.log(this.user);
 
-            this.router.navigate(['/annonce']);
-          }else{
-            this.router.navigate(['/homepage']);
+            if (this.user.type == 'professionnel') {
+              this.router.navigate(['/annonce']);
+            } else {
+              this.router.navigate(['/home']);
+            }
+
+          }
+          else {
+            this.error = ' Please verify  your username or password !  ';
           }
 
-        }, loginError => this.error = loginError.message + ' : Please verify  your username or password !  ');
 
+        });
 
   }
   logout(){

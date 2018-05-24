@@ -48,7 +48,7 @@ const routes: Routes = [
   {path: 'calendar' , component: CalendarComponent,canActivate : [AuthGuard]},
   {path : 'profile' , component: ProfileComponent},
   {path : 'request' , component : RequestComponent},
-  {path : 'homepage' , component : HomepageComponent,canActivate : [AuthGuard]}
+  {path : 'home' , component : HomepageComponent,canActivate : [AuthGuard]}
 
 ];
 

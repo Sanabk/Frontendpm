@@ -1,6 +1,18 @@
-{{annonce.description}}
+<div class="container">
+
+    <h3 style="color: #0d5aa7"> Service : {{annonce.title}}</h3>
+    <div class="row" style="margin: 30px">
+<div style="width: 40% ; float: left;">
+    <p> <span class="fa fa-fa fa-info-circle"></span> {{annonce.description}}</p>
+    <p> <span class="fa fa-map-marker"></span> {{annonce.city}}</p>
+    <p> <span class="fa  fa-bars"></span> {{annonce.category.name}}</p>
+    <p><span class="fa fa-phone"></span> {{annonce.phone}}</p>
+    <p><span class="fa fa-user"></span> {{annonce.user.mail}}</p>
 
 
-
-<div id='calendar'></div>
-
+</div>
+<div style="width: 50% ; float: left">
+    <div id='calendar' ></div>
+</div>
+    </div>
+</div>

@@ -1,18 +1,17 @@
 export class Events {
     public subject : String;
     public jour :String ;
-    public from : String ;
-    public to : String ;
+    public fromo : String ;
+    public toon : String ;
+    public service_id : Number;
 
     constructor(  public subject : String,
     public jour :String ,
-    public from : String ,
-    public to : String ){
+    public fromo : String ,
+    public toon : String ,public service_id : Number ){
 
 }
 
 
 
-}/**
- * Created by sanab on 20/05/2018.
- */
+}
