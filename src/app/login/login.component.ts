@@ -36,6 +36,10 @@ export class LoginComponent implements OnInit {
             this.user = result;
             if (typeof (Storage) !== "undefined") {
               sessionStorage.setItem('type', this.user.type);
+              sessionStorage.setItem('id' , this.user.id);
+              sessionStorage.setItem('mail' , this.user.mail);
+              sessionStorage.setItem('username' , this.user.username);
+
             }
             console.log(this.user);
 

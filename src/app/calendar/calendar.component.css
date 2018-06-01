@@ -6,6 +6,19 @@ body {
 }
 
 #calendar {
-    max-width: 900px;
-    margin: 0 auto;
+    max-width: 675px;
+    margin: 2.5% auto;
+}
+.btn {
+
+    background: transparent;
+    color: black;
+    padding: 10px 22px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.6s;
+    cursor: pointer;
+    margin-right:16px
 }

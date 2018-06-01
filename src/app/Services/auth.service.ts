@@ -47,7 +47,31 @@ export class AuthService {
         }).catch(this.handelError);
   }
 
+    getUserById(id : any){
+      const  headers = new Headers();
+      headers.append('X-Auth-Token' , this.token.value);
 
+      //noinspection TypeScriptUnresolvedFunction
+      return this.http.get('http://127.0.0.1:8001/user/'+id , {headers : headers})
+          .map(res=>res.json()).catch(this.handelError);
+    }
+
+updatepassword(pwd , pwd1 , pwd2 , mail){
+
+    let contenu = {
+      "password":pwd,
+      "newpassword":pwd1,
+      "newpasswordconfirmation":pwd2,
+      "mail": mail
+
+    }
+  let headers = new Headers();
+  headers.append('content-type', 'application/json');
+  headers.append('X-Auth-Token' , this.token.value);
+  //noinspection TypeScriptUnresolvedFunction
+  return this.http.put('http://127.0.0.1:8001/user/update-password', contenu ,{headers : headers} )
+      .map(res=>res.json()).catch(this.handelError);
+}
 
 
   logout(): void {

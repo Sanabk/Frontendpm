@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute, Params} from "@angular/router";
+import {ActivatedRoute, Params, Router} from "@angular/router";
 import {AnnonceService} from "../Services/annonce.service";
 import {CalendarService} from "../Services/calendar.service";
 import {Events} from "../Models/Events";
@@ -15,13 +15,18 @@ declare var $ :any;
 export class DetailsAnnonceComponent implements OnInit {
 idS : any;
 annonce : any;
-  constructor(  private activatedRoute : ActivatedRoute, private annonceService : AnnonceService , private calendarService : CalendarService) { }
+  constructor( private router: Router , private activatedRoute : ActivatedRoute, private annonceService : AnnonceService , private calendarService : CalendarService) { }
 evts:any=[];
 
   dispo : any;
 
 
   ngOnInit() {
+    if(typeof (Storage) !== "undefined"){
+      if(sessionStorage.getItem('type') != 'particular'){
+        this.router.navigate(['/annonce']);
+      }
+    }
     let context = this;
     this.activatedRoute.params.subscribe((params: Params) => {
       this.idS= params['id'];
@@ -31,6 +36,7 @@ evts:any=[];
         .subscribe(res=>{
 
           this.annonce=res;
+          console.log(this.annonce);
         this.calendarService.getAllDispo(this.annonce.user.id)
             .subscribe(res=>{this.dispo = res;
             console.log(this.dispo)

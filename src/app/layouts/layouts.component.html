@@ -1,0 +1,40 @@
+
+<nav class="navbar navbar-default" role="navigation">
+  <!-- Brand and toggle get grouped for better mobile display -->
+  <div class="navbar-header">
+    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" href="#"><img src="../../assets/logo.png" style="width: 150px"></a>
+  </div>
+
+  <!-- Collect the nav links, forms, and other content for toggling -->
+  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <ul class="nav navbar-nav" style="margin-top: 22px">
+      <li *ngIf="user_type == 'professionnel'"><a  routerLink="/annonce" class="nav-a">Services </a></li>
+      <li *ngIf="user_type == 'professionnel'"><a  routerLink="/calendar" class="nav-a" >Calendar</a></li>
+      <li><a   routerLink="/home" class="nav-a" *ngIf="user_type != 'professionnel'" >Services</a></li>
+
+      <li><a   routerLink="/reclamation" class="nav-a"  >Reclamation</a></li>
+
+      <li><a   routerLink="/request" class="nav-a" *ngIf="user_type == 'professionnel'" >Demandes</a></li>
+
+    </ul>
+
+    <ul class="nav navbar-nav navbar-right" style="margin-top: 22px">
+      <li><a  routerLink="/profile" class="nav-a" *ngIf="user_type == 'professionnel'">Profile</a></li>
+
+     <li style="margin-top: 15px ; width: 25px"> <div class="dropdown" dropdown [dropdownToggle]="false">
+     <span class="glyphicon glyphicon-chevron-down" dropdown-open style="color: #777;"></span>
+        <ul class="dropdown-menu">
+          <li><a routerLink="/account" >  <span class="glyphicon glyphicon-user"></span> Account</a></li>
+          <li><a (click)="logout()"><span class=" glyphicon glyphicon-log-out"></span> Logout</a></li>
+        </ul>
+      </div>
+     </li>
+    </ul>
+  </div><!-- /.navbar-collapse -->
+</nav>

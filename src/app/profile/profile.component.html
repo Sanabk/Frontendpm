@@ -1,124 +1,132 @@
+<app-layouts></app-layouts>
 
-<table>
+<div class="container"  style="padding: 20px ; background: #eee">
+  <div class="panel-group">
+<h3>Update your disponibilities</h3>
+    <hr>
+  <table style="margin: auto">
   <tr>
     <td>
-      <input type="checkbox" value="monday" [(ngModel)]="monday.Day"> Monday
+      <input    type="checkbox" value="monday" [(ngModel)]="monday.Day"> Monday
     </td>
     <td>
-     From : <input type="time" [(ngModel)]="monday.Fromo">
+     From : <input class="form-control"  type="time" [(ngModel)]="monday.Fromo">
     </td>
     <td>
-      To : <input type="time" [(ngModel)]="monday.Too">
+      To : <input class="form-control"  type="time" [(ngModel)]="monday.Too">
     </td>
     <td>
-      From : <input type="time" [(ngModel)]="monday.Fromt">
+      From : <input class="form-control"  type="time" [(ngModel)]="monday.Fromt">
     </td>
     <td>
-      To : <input type="time" [(ngModel)]="monday.Tot">
+      To : <input class="form-control"  type="time" [(ngModel)]="monday.Tot">
     </td>
   </tr>
   <tr>
     <td>
-      <input type="checkbox" value="tuesday" [(ngModel)]="tuesday.Day"> Monday
+      <input   type="checkbox" value="tuesday" [(ngModel)]="tuesday.Day"> Tuesday
     </td>
     <td>
-      From : <input type="time" [(ngModel)]="tuesday.Fromo">
+      From : <input class="form-control"  type="time" [(ngModel)]="tuesday.Fromo">
     </td>
     <td>
-      To : <input type="time" [(ngModel)]="tuesday.Too">
+      To : <input class="form-control"  type="time" [(ngModel)]="tuesday.Too">
     </td>
     <td>
-      From : <input type="time" [(ngModel)]="tuesday.Fromt">
+      From : <input class="form-control"  type="time" [(ngModel)]="tuesday.Fromt">
     </td>
     <td>
-      To : <input type="time" [(ngModel)]="tuesday.Tot">
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <input type="checkbox" value="wednesday" [(ngModel)]="wed.Day"> Monday
-    </td>
-    <td>
-      From : <input type="time" [(ngModel)]="wed.Fromo">
-    </td>
-    <td>
-      To : <input type="time" [(ngModel)]="wed.Too">
-    </td>
-    <td>
-      From : <input type="time" [(ngModel)]="wed.Fromt">
-    </td>
-    <td>
-      To : <input type="time" [(ngModel)]="wed.Tot">
+      To : <input class="form-control"  type="time" [(ngModel)]="tuesday.Tot">
     </td>
   </tr>
   <tr>
     <td>
-      <input type="checkbox" value="thursday"[(ngModel)]="thur.Day"> Monday
+      <input  type="checkbox" value="wednesday" [(ngModel)]="wed.Day"> Wednesday
     </td>
     <td>
-      From : <input type="time" [(ngModel)]="thur.Fromo">
+      From : <input class="form-control"  type="time" [(ngModel)]="wed.Fromo">
     </td>
     <td>
-      To : <input type="time" [(ngModel)]="thur.Too">
+      To : <input class="form-control"  type="time" [(ngModel)]="wed.Too">
     </td>
     <td>
-      From : <input type="time" [(ngModel)]="thur.Fromt">
+      From : <input class="form-control"  type="time" [(ngModel)]="wed.Fromt">
     </td>
     <td>
-      To : <input type="time" [(ngModel)]="thur.Tot">
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <input type="checkbox" value="friday" [(ngModel)]="fri.Day"> Monday
-    </td>
-    <td>
-      From : <input type="time" [(ngModel)]="fri.Fromo">
-    </td>
-    <td>
-      To : <input type="time" [(ngModel)]="fri.Too">
-    </td>
-    <td>
-      From : <input type="time" [(ngModel)]="fri.Fromt">
-    </td>
-    <td>
-      To : <input type="time" [(ngModel)]="fri.Tot">
+      To : <input class="form-control"  type="time" [(ngModel)]="wed.Tot">
     </td>
   </tr>
   <tr>
     <td>
-      <input type="checkbox" value="saturday" [(ngModel)]="sat.Day"> Monday
+      <input   type="checkbox" value="thursday"[(ngModel)]="thur.Day"> Thursday
     </td>
     <td>
-      From : <input type="time" [(ngModel)]="sat.Fromo">
+      From : <input class="form-control"  type="time" [(ngModel)]="thur.Fromo">
     </td>
     <td>
-      To : <input type="time" [(ngModel)]="sat.Too">
+      To : <input class="form-control"  type="time" [(ngModel)]="thur.Too">
     </td>
     <td>
-      From : <input type="time" [(ngModel)]="sat.Fromt">
+      From : <input class="form-control"  type="time" [(ngModel)]="thur.Fromt">
     </td>
     <td>
-      To : <input type="time" [(ngModel)]="sat.Tot">
+      To : <input class="form-control"  type="time" [(ngModel)]="thur.Tot">
     </td>
   </tr>
   <tr>
     <td>
-      <input type="checkbox" value="sunday"[(ngModel)]="sun.Day"> Monday
+      <input  type="checkbox" value="friday" [(ngModel)]="fri.Day"> Friday
     </td>
     <td>
-      From : <input type="time" [(ngModel)]="sun.Fromo">
+      From : <input class="form-control"  type="time" [(ngModel)]="fri.Fromo">
     </td>
     <td>
-      To : <input type="time" [(ngModel)]="sun.Too">
+      To : <input class="form-control"  type="time" [(ngModel)]="fri.Too">
     </td>
     <td>
-      From : <input type="time" [(ngModel)]="sun.Fromt">
+      From : <input class="form-control"  type="time" [(ngModel)]="fri.Fromt">
     </td>
     <td>
-      To : <input type="time" [(ngModel)]="sun.Tot">
+      To : <input class="form-control"  type="time" [(ngModel)]="fri.Tot">
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <input  type="checkbox" value="saturday" [(ngModel)]="sat.Day"> Saturday
+    </td>
+    <td>
+      From : <input class="form-control"  type="time" [(ngModel)]="sat.Fromo">
+    </td>
+    <td>
+      To : <input class="form-control"  type="time" [(ngModel)]="sat.Too">
+    </td>
+    <td>
+      From : <input class="form-control"  type="time" [(ngModel)]="sat.Fromt">
+    </td>
+    <td>
+      To : <input class="form-control"  type="time" [(ngModel)]="sat.Tot">
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <input  type="checkbox" value="sunday"[(ngModel)]="sun.Day"> Sunday
+    </td>
+    <td>
+      From : <input class="form-control"  type="time" [(ngModel)]="sun.Fromo">
+    </td>
+    <td>
+      To : <input class="form-control"  type="time" [(ngModel)]="sun.Too">
+    </td>
+    <td>
+      From : <input class="form-control"  type="time" [(ngModel)]="sun.Fromt">
+    </td>
+    <td>
+      To : <input class="form-control"  type="time" [(ngModel)]="sun.Tot">
     </td>
   </tr>
 
 </table>
-<a  (click)="save()"><button>Save</button></a>
+
+<a  (click)="save()"><button  class="btn btn-success"  style="float: right ; margin-right: 30px">Save</button></a>
+  </div>
+</div>

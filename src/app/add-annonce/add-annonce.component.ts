@@ -63,6 +63,11 @@ export class AddAnnonceComponent implements OnInit {
   }
 
   ngOnInit() {
+    if(typeof (Storage) !== "undefined"){
+      if(sessionStorage.getItem('type') != 'professionnel'){
+        this.router.navigate(['/home']);
+      }
+    }
     this.getCategory();
     //noinspection TypeScriptUnresolvedFunction
     this.mapsAPILoader.load().then(

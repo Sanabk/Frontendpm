@@ -22,11 +22,11 @@ export class AnnonceComponent implements OnInit {
   }
 
   ngOnInit() {
-    // if(typeof (Storage) !== "undefined"){
-    //   if(sessionStorage.getItem('type') != 'professionnel'){
-    //     this.router.navigate(['/homepage']);
-    //   }
-    // }
+    if(typeof (Storage) !== "undefined"){
+      if(sessionStorage.getItem('type') != 'professionnel'){
+        this.router.navigate(['/home']);
+      }
+    }
 
     this.getAnnonce();
   }

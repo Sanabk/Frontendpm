@@ -70,7 +70,7 @@ export class AnnonceService {
     headers.append('X-Auth-Token' , this.authenticationService.token.value);
     //noinspection TypeScriptUnresolvedFunction
     return this.http.get(this.uri+'/'+ids , {headers : headers})
-        .map(res=>res.json()).catch(this.handelError);;
+        .map(res=>res.json()).catch(this.handelError);
   }
 
 

@@ -30,10 +30,13 @@ import { RequestComponent } from './request/request.component';
 import {RequestService} from './Services/request.service';
 import { DetailsAnnonceComponent } from './details-annonce/details-annonce.component';
 import { HomepageComponent } from './homepage/homepage.component';
+import { LayoutsComponent } from './layouts/layouts.component';
+import { AccountComponent } from './account/account.component';
 
+import {DropdownModule} from "ngx-dropdown";
 
 const routes: Routes = [
-  {path: '', component : AppComponent},
+  {path: '', component : HomepageComponent , canActivate : [AuthGuard]},
   {path: 'login', component : LoginComponent},
   {path: 'annonce', component : AnnonceComponent, canActivate : [AuthGuard]},
   {path: 'category', component : ListCategoryComponent, canActivate : [AuthGuard]},
@@ -48,7 +51,9 @@ const routes: Routes = [
   {path: 'calendar' , component: CalendarComponent,canActivate : [AuthGuard]},
   {path : 'profile' , component: ProfileComponent},
   {path : 'request' , component : RequestComponent},
-  {path : 'home' , component : HomepageComponent,canActivate : [AuthGuard]}
+  {path : 'home' , component : HomepageComponent,canActivate : [AuthGuard]},
+  {path : 'account' , component : AccountComponent,canActivate : [AuthGuard]}
+
 
 ];
 
@@ -71,7 +76,9 @@ const routes: Routes = [
     ProfileComponent,
     RequestComponent,
     DetailsAnnonceComponent,
-    HomepageComponent
+    HomepageComponent,
+    LayoutsComponent,
+    AccountComponent
   ],
   imports: [
     BrowserModule,
@@ -79,6 +86,7 @@ const routes: Routes = [
     HttpModule,
       HttpClientModule,
     FormsModule,
+      DropdownModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCrxo9oHA3cqfzWKXm8q-P7mkG01NsPISc',
       libraries: ["places"]

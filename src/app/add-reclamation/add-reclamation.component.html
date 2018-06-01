@@ -1,125 +1,43 @@
 
+<app-layouts></app-layouts>
 
 
-
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAc86thRdYwFmyj-SjdErgzfynucza4eG8&signed_in=true&libraries=places&callback=initAutocomplete"
-        async defer></script>
-<!------ Include the above in your HEAD tag ---------->
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-</head>
-<body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-  <div class="container">
-    <a class="navbar-brand"   routerLink="/annonce">Services List</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarResponsive">
-      <ul class="navbar-nav ml-auto">
-        <!--<li class="nav-item active">-->
-        <!--<a class="nav-link" href="#">Home-->
-        <!--<span class="sr-only">(current)</span>-->
-        <!--</a>-->
-        <!--</li>-->
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/add-annonce">Add New Service</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/reclamation">Reclamation</a>
-        </li>
-
-      </ul>
-    </div>
-  </div>
-</nav>
 <div class="container cont">
   <div class="col-md-6 col-sm-8 col-xs-12 col-md-offset-3 col-sm-offset-2 main">
 
-    <form action="#" method="post" class="form-horizontal" (submit)="addReclamation(title,context)">
+    <form action="#" method="post" class="form-horizontal" ngNativeValidate (submit)="addReclamation(title,context)">
 
-      <legend>Add Service</legend>
+      <legend>Send Reclamation</legend>
       <div class="form-group">
         <label class="col-md-3 control-label">Title :</label>
         <div class="col-md-9">
-          <input type="text" id="name" name="name" class="form-control"
+          <input type="text" id="name" name="name" placeholder="Add Title" class="form-control"
                  required
                  [(ngModel)]="title" #name="ngModel" >
 
-          <div *ngIf="name.invalid && (name.dirty || name.touched)"
-               class="alert alert-danger">
 
-            <div *ngIf="name.errors.required">
-              Title is required.
-            </div>
-
-
-          </div>
         </div>
       </div>
 
 
       <div class="form-group">
-        <label class="col-md-3 control-label">Description :</label>
+        <label class="col-md-3 control-label">Message :</label>
         <div class="col-md-9">
-          <div class="col-md-9">
-            <textarea  class="form-control" placeholder="Add Message Here..." id="description" name="description"
+            <textarea type="text" id="desc" name="desc" placeholder="Add Message" class="form-control"
                    required
-                   [(ngModel)]="context" #name="ngModel" >Add Message Here...</textarea>
-
-            <div *ngIf="name.invalid && (name.dirty || name.touched)"
-                 class="alert alert-danger">
-
-              <div *ngIf="name.errors.required">
-                Context is required.
-              </div>
-
-            </div>
-          </div>
+                   [(ngModel)]="context" #name="ngModel" ></textarea>
         </div>
       </div>
 
-
-
-      <!--<div class="form-group">-->
-      <!--<label class="col-md-3 control-label">City :</label>-->
-      <!--<div class="col-md-9">-->
-      <!--<select class="form-control" [(ngModel)]="city" required>-->
-      <!--<option>Tunis</option>-->
-      <!--<option>Sousse</option>-->
-      <!--<option>Monastir</option>-->
-      <!--<option>Beja</option>-->
-      <!--<option>Kef</option>-->
-      <!--<option>Jandouba</option>-->
-      <!--</select>-->
-      <!--</div>-->
-      <!--</div>-->
 
       <div *ngFor="let error of errors" class="alert alert-danger">
         <div>There is an error in :{{error.field}} field</div>
         <div>{{error.message}}</div>
       </div>
 
-      <button type="submit" class="btn btn-primary " >Save</button>
+      <button type="submit" class="btn btn-primary " >Send</button>
       <button type="reset" class="btn btn-danger"> Cancel</button>
 
     </form>
   </div>
 </div>
-
-<script>
-    $(document).ready(function(){
-
-    });
-</script>
-</body>
-</html>
-
-
-
-

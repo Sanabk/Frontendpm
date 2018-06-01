@@ -9,7 +9,7 @@ import {CalendarService} from "../Services/calendar.service";
 export class ProfileComponent implements OnInit {
 
   constructor(private calendarService : CalendarService) { }
-
+  time : any ="08:00";
   monday = new Calendar ();
   tuesday = new Calendar ();
   wed = new Calendar ();

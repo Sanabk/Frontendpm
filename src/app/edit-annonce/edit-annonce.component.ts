@@ -52,6 +52,11 @@ export class EditAnnonceComponent implements OnInit {
 
   }
   ngOnInit() {
+    if(typeof (Storage) !== "undefined"){
+      if(sessionStorage.getItem('type') != 'professionnel'){
+        this.router.navigate(['/home']);
+      }
+    }
 
     this._annonceService.getAnnonceById(this.id)
         .subscribe(res=> {

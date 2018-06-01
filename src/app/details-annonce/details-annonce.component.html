@@ -1,13 +1,44 @@
+<app-layouts></app-layouts>
+
 <div class="container">
 
-    <h3 style="color: #0d5aa7"> Service : {{annonce.title}}</h3>
+
     <div class="row" style="margin: 30px">
 <div style="width: 40% ; float: left;">
-    <p> <span class="fa fa-fa fa-info-circle"></span> {{annonce.description}}</p>
-    <p> <span class="fa fa-map-marker"></span> {{annonce.city}}</p>
-    <p> <span class="fa  fa-bars"></span> {{annonce.category.name}}</p>
-    <p><span class="fa fa-phone"></span> {{annonce.phone}}</p>
-    <p><span class="fa fa-user"></span> {{annonce.user.mail}}</p>
+    <div class="container">
+        <div class="card">
+            <div class="container-fliud">
+                <div class="wrapper row">
+
+                    <div class="details col-md-4">
+                        <div class="panel panel-default text-center">
+                            <h3><div class="panel-title"><span class="glyphicon glyphicon-list-alt"></span>Service name</div></h3>
+                            <hr>
+                            <h4>{{annonce.title}}</h4>
+                        </div>
+                        <div class="panel panel-default text-center">
+                            <div class="rating">
+                                <h3><div class="panel-title"><span class="glyphicon glyphicon-info-sign"></span>Category </div></h3>
+                                <hr>
+                                <h4>{{annonce.category.name}}</h4>
+                            </div>
+                        </div>
+                        <div class="panel panel-default text-center">
+                            <h3><div class="panel-title"><span class="glyphicon glyphicon-comment"></span> Description</div></h3>
+                            <hr>
+                            <h4> {{annonce.description}}</h4>
+                        </div>
+                        <div class="panel panel-default text-center">
+                            <h3><div class="panel-title"><span class="glyphicon glyphicon-phone"></span> Phone Number</div></h3>
+                            <hr>
+                            <h4> {{annonce.phone}}</h4>
+                        </div>
+                        <div class="panel panel-default text-center">
+                        <h3><div class="panel-title"><span class="glyphicon glyphicon-user"></span> Mail Adress</div></h3>
+                        <hr>
+                        <h4> {{annonce.user.mail}}</h4>
+                    </div>
+                    </div></div></div></div></div>
 
 
 </div>
