@@ -23,9 +23,15 @@ export class AnnonceComponent implements OnInit {
 
   ngOnInit() {
     if(typeof (Storage) !== "undefined"){
-      if(sessionStorage.getItem('type') != 'professionnel'){
-        this.router.navigate(['/home']);
-      }
+        if(sessionStorage.getItem('id') != undefined) {
+            if (sessionStorage.getItem('type') != 'Professional') {
+                this.router.navigate(['/home']);
+            }
+        }
+        else{
+            this.router.navigate(['/login']);
+
+        }
     }
 
     this.getAnnonce();

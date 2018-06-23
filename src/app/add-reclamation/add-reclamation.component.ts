@@ -4,7 +4,7 @@ import {ReclamationService} from '../Services/reclamation.service';
 import {Directive, ElementRef, EventEmitter, Output} from '@angular/core';
 import {NgModel} from '@angular/forms';
 declare var google:any;
-
+declare var jQuery : any;
 @Component({
   selector: 'app-add-reclamation',
   templateUrl: './add-reclamation.component.html',
@@ -14,17 +14,17 @@ export class AddReclamationComponent implements OnInit {
   title: string ;
   context: string;
 
-  errors=<any>[];
+  errors:any;
 
    constructor(private _reclamationService: ReclamationService , private router: Router) { }
 
   addReclamation(title, context) {
 
+     jQuery('.load').css('display','block');
     let reclamation: any;
     reclamation = {title: title, context: context};
     this._reclamationService.addReclamation(reclamation).subscribe(( reclamation => {
-
-      this.router.navigate(['/reclamations']);
+      this.router.navigate(['/reclamation']);
 
     }), addError => this.errors = addError);
 

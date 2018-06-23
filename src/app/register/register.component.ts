@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {RegisterService} from '../Services/register.service';
-
+declare var jQuery : any ;
 
 
 @Component({
@@ -25,6 +25,7 @@ export class RegisterComponent implements OnInit {
 
   }
   addUser(username, email, type, password) {
+    jQuery('.load').css('display','block');
 
 
     if ((username == '') || (email == undefined) || (type == undefined) || (password == undefined)) {

@@ -2,7 +2,12 @@
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
 <app-layouts></app-layouts>
 
+<div   *ngIf="loading" style="width: 100% ; background-color: #fff">
+    <br><br><br>
+   <img src="../../assets/Loading_icon.gif" style="width: 150px" class="center-block" >
+</div>
 
 <div id='calendar'></div>

@@ -11,7 +11,7 @@ import {AuthService} from './auth.service';
 @Injectable()
 export class AnnonceService {
 
-  private uri= 'http://127.0.0.1:8001/annonces';
+  private uri= 'http://127.0.0.1:8001/user/annonces';
 
 
 

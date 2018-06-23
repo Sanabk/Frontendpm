@@ -10,7 +10,7 @@ import {AuthService} from './auth.service';
 @Injectable()
 export class CategoryService {
 
-  private uri= 'http://127.0.0.1:8001/category';
+  private uri= 'http://127.0.0.1:8001/user/category';
 
 
 

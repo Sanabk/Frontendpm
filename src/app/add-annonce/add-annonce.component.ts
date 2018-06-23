@@ -6,6 +6,7 @@ import {Component, ViewChild, ElementRef, NgZone, OnInit} from '@angular/core';
 import {MapsAPILoader} from '@agm/core';
 import {} from '@types/googlemaps';
 
+declare var jQuery : any;
 @Component({
   selector: 'app-add-annonce',
   templateUrl: './add-annonce.component.html',
@@ -37,6 +38,7 @@ export class AddAnnonceComponent implements OnInit {
     );
   }
   addAnnonce(title, description, category, phone, city, picture) {
+    jQuery('.load').css('display','block');
 
     console.log(city);
     if(phone.length != 8) {
@@ -64,7 +66,7 @@ export class AddAnnonceComponent implements OnInit {
 
   ngOnInit() {
     if(typeof (Storage) !== "undefined"){
-      if(sessionStorage.getItem('type') != 'professionnel'){
+      if(sessionStorage.getItem('type') != 'Professional'){
         this.router.navigate(['/home']);
       }
     }

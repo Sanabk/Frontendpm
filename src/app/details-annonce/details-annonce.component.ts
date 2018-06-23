@@ -15,6 +15,10 @@ declare var $ :any;
 export class DetailsAnnonceComponent implements OnInit {
 idS : any;
 annonce : any;
+event_title : any ;
+event_start : any;
+event_end : any;
+event_test:any=false;
   constructor( private router: Router , private activatedRoute : ActivatedRoute, private annonceService : AnnonceService , private calendarService : CalendarService) { }
 evts:any=[];
 
@@ -23,7 +27,7 @@ evts:any=[];
 
   ngOnInit() {
     if(typeof (Storage) !== "undefined"){
-      if(sessionStorage.getItem('type') != 'particular'){
+      if(sessionStorage.getItem('type') != 'Particular'){
         this.router.navigate(['/annonce']);
       }
     }
@@ -51,6 +55,7 @@ evts:any=[];
         right: 'month,agendaWeek,agendaDay'
       },
       defaultDate:new Date(),
+      defaultView: 'agendaWeek',
       editable: true,
       eventLimit: true, // allow "more" link when too many events
       events: this.evts,
@@ -66,29 +71,54 @@ evts:any=[];
 
 
       if (new_event != null) {
-        $(this).css('background-color', 'red');
+       // $(this).css('background-color', 'red');
         let ev: any = {'title': new_event, 'start': date.format()};
-        //console.log(date.format('end'));
+        //console.log(date.start);
+        //console.log(date.end);
 
 
-        context.calendarService.addCalendar(new Events(new_event, date.format(), date.format(), date.format(), context.annonce.id), context.idS)
-            .subscribe(res => res);
+
 
         //context.evts.push(ev);
         $('#calendar').fullCalendar('renderEvent', ev);
       }
           });
     }
+  },
+      eventResize: function(event, delta, revertFunc) {
+          //let ev: any = {'title': "ok", 'start': event.start.format() , 'end' : event.end.format()};
 
+        if(context.isDisponible(event.end)){
+          context.event_title=event.title;
+          context.event_start=event.start.format();
+          context.event_end=event.end.format();
+          context.event_test=true;
+         // context.SaveEvent(event.title , event.start.format() , event.end.format()  );
 
+        }
+       else{
+          alert('non disponible')
+          context.event_test=false;
 
-
+      }
+        //  $('#calendar').fullCalendar('renderEvent', ev);
 
       }
     });
 
 
 
+  }
+
+  SaveEvent() {
+    if (this.event_test) {
+      this.calendarService.addCalendar(new Events(this.event_title, this.event_start, this.event_start, this.event_end, this.annonce.id), this.idS)
+          .subscribe(res => res);
+      alert("event saved");
+    }
+    else {
+      alert("please check request time .. current time is not available");
+    }
   }
   isDisponible(date : any){
     console.log(date.format());

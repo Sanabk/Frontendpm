@@ -17,6 +17,9 @@
                 <th class="text-center">Action</th>
             </tr>
             </thead>
+            <tr   *ngIf="events.length==0" style="width: 100% ; background-color: #fff">
+                <td colspan="4" style="background-color: #fff"><img src="../../assets/Loading_icon.gif" style="width: 150px" class="center-block" ></td>
+            </tr>
             <tr *ngFor=" let evt of events">
                 <td>{{evt.subject}}</td>
                 <td>{{evt.fromo}}</td>

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {AuthService} from '../Services/auth.service';
-
+declare var jQuery : any;
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit {
 
 
   login(e) {
+    jQuery('.load').css('display','block');
 
     e.preventDefault();
 
@@ -43,7 +44,7 @@ export class LoginComponent implements OnInit {
             }
             console.log(this.user);
 
-            if (this.user.type == 'professionnel') {
+            if (this.user.type == 'Professional') {
               this.router.navigate(['/annonce']);
             } else {
               this.router.navigate(['/home']);

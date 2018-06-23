@@ -9,7 +9,7 @@ import {AuthService} from "./auth.service";
 
 @Injectable()
 export class RequestService {
-  uri='http://127.0.0.1:8001';
+  uri='http://127.0.0.1:8001/user';
   constructor( private http : Http , private authenticationService: AuthService) { }
 
 
@@ -31,6 +31,14 @@ export class RequestService {
     headers.append( 'X-Auth-Token', this.authenticationService.token.value);
     //noinspection TypeScriptUnresolvedFunction
     return this.http.delete(this.uri+'/delete/'+id, {headers: headers}).map(res => res.json()).catch(this.handelError);
+
+  }
+  getAll(){
+    const headers = new Headers();
+
+    headers.append( 'X-Auth-Token', this.authenticationService.token.value);
+    //noinspection TypeScriptUnresolvedFunction
+    return this.http.get(this.uri+'/list/demandes', {headers: headers}).map(res => res.json()).catch(this.handelError);
 
   }
   private handelError(error: Response) {

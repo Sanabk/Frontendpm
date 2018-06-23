@@ -17,7 +17,7 @@ demande_id : any;
 
   ngOnInit(){
     if(typeof (Storage) !== "undefined"){
-      if(sessionStorage.getItem('type') != 'professionnel'){
+      if(sessionStorage.getItem('type') != 'Professional'){
         this.router.navigate(['/home']);
       }
     }

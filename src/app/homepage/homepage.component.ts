@@ -25,8 +25,14 @@ export class HomepageComponent implements OnInit {
 
   ngOnInit() {
     if(typeof (Storage) !== "undefined"){
-      if(sessionStorage.getItem('type') != 'particular'){
-        this.router.navigate(['/annonce']);
+      if(sessionStorage.getItem('id') != undefined){
+        if(sessionStorage.getItem('type') != 'Particular') {
+          this.router.navigate(['/annonce']);
+        }
+      }
+      else{
+        this.router.navigate(['/login']);
+
       }
     }
     console.log('ok');

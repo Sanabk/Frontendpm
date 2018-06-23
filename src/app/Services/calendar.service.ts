@@ -10,7 +10,7 @@ import {Events} from "../Models/Events";
 
 @Injectable()
 export class CalendarService {
-uri='http://127.0.0.1:8001/';
+uri='http://127.0.0.1:8001/user/';
   constructor( private http : Http, private authenticationService: AuthService) { }
 
   addDispo(day: Calendar) {

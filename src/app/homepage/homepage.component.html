@@ -37,7 +37,9 @@
 
     <div class="row">
       <!-- Team member -->
-
+      <div  class="col-xs-12 col-sm-6 col-md-4" *ngIf="annonces.length==0" style="width: 100% ; background-color: #fff">
+        <img src="../../assets/Loading_icon.gif" style="width: 150px" class="center-block">
+      </div>
       <div class="col-xs-12 col-sm-6 col-md-4" *ngFor="let a of  annonces | filter: queryString : 'title'">
         <a routerLink="/details-annonce/{{a.id}}">
         <div class="image-flip" ontouchstart="this.classList.toggle('hover');">

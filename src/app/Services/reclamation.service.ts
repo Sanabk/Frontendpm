@@ -10,7 +10,7 @@ import {Reclamation} from '../Models/Reclamation';
 @Injectable()
 export class ReclamationService {
 
-  private uri= 'http://127.0.0.1:8001/reclamations';
+    private uri= 'http://127.0.0.1:8001/user/reclamation/';
 
     constructor(private http: Http, private authenticationService: AuthService  ) {}
 
@@ -21,7 +21,7 @@ export class ReclamationService {
         // .value
     );
     //noinspection TypeScriptUnresolvedFunction
-    return this.http.post(this.uri, JSON.stringify(reclamation), {headers : headers}).map(res => res.json()).catch(this.handelError);
+    return this.http.post(this.uri, JSON.stringify(reclamation), {headers : headers}).map(res => res).catch(this.handelError);
   }
 
   private handelError(error: Response) {

@@ -34,6 +34,9 @@
         <th class="text-center">Action</th>
       </tr>
       </thead>
+      <tr   *ngIf="annonces.length==0" style="width: 100% ; background-color: #fff">
+        <td colspan="7" style="background-color: #fff"><img src="../../assets/Loading_icon.gif" style="width: 150px" class="center-block" ></td>
+      </tr>
       <tr *ngFor="let a of  annonces | filter: queryString : 'title'">
         <td> {{a.title}}</td>
         <td>{{a.category.name}}</td>

@@ -24,6 +24,9 @@
           </tr>
           </thead>
           <tbody>
+          <tr   *ngIf="reclamations.length==0" style="width: 100% ; background-color: #fff">
+            <td colspan="2" style="background-color: #fff"><img src="../../assets/Loading_icon.gif" style="width: 150px" class="center-block" ></td>
+          </tr>
           <tr *ngFor="let a of  reclamations | filter: queryString : 'title'">
             <td> {{a.title}}</td>
             <td> {{a.context}}</td>

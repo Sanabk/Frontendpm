@@ -14,19 +14,45 @@
   <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
     <ul class="nav navbar-nav" style="margin-top: 22px">
-      <li *ngIf="user_type == 'professionnel'"><a  routerLink="/annonce" class="nav-a">Services </a></li>
-      <li *ngIf="user_type == 'professionnel'"><a  routerLink="/calendar" class="nav-a" >Calendar</a></li>
-      <li><a   routerLink="/home" class="nav-a" *ngIf="user_type != 'professionnel'" >Services</a></li>
+      <li *ngIf="user_type == 'Professional'"><a  routerLink="/annonce" class="nav-a">Services </a></li>
+      <li *ngIf="user_type == 'Professional'"><a  routerLink="/calendar" class="nav-a" >Calendar</a></li>
+      <li><a   routerLink="/home" class="nav-a" *ngIf="user_type != 'Professional'" >Services</a></li>
 
       <li><a   routerLink="/reclamation" class="nav-a"  >Reclamation</a></li>
 
-      <li><a   routerLink="/request" class="nav-a" *ngIf="user_type == 'professionnel'" >Demandes</a></li>
+      <li><a   routerLink="/request" class="nav-a" *ngIf="user_type == 'Professional'" >Demandes</a></li>
 
     </ul>
 
     <ul class="nav navbar-nav navbar-right" style="margin-top: 22px">
-      <li><a  routerLink="/profile" class="nav-a" *ngIf="user_type == 'professionnel'">Profile</a></li>
+      <li><a  routerLink="/profile" class="nav-a" *ngIf="user_type == 'Professional'">Profile</a></li>
+        <li style="margin-top: 15px ; width: 25px"> <div class="dropdown" dropdown [dropdownToggle]="false"  *ngIf="user_type != 'Professional'">
+            <span class="glyphicon glyphicon-bell" dropdown-open style="color: #777;"></span>
+            <ul class="dropdown-menu" style="    max-height: 400px; overflow: auto;">
+                <div *ngIf="requests.length==0">
+                    <img src="../../assets/Loading_icon.gif" style="width: 150px" class="center">
+                </div>
+                <div *ngFor="let req of requests">
+                <li style="background-color: #2bba7945 ; width : 300px" *ngIf="req.valid==1" routerLink="/details-annonce/{{req.service.id}}">
 
+                    <span class="glyphicon glyphicon-ok"></span>
+                    <b>Your request "{{req.subject}}" has been accepted</b> <br>
+                    Service Name : {{req.service.title}} <br>
+                    <span class="glyphicon glyphicon-calendar" style="color: gray"></span> From : {{req.fromo}} <br> To : {{req.toon}}
+                       <hr></li>
+                <li style="background-color: #ffca434d ; width: 300px" *ngIf="req.valid==0"  routerLink="/details-annonce/{{req.service.id}}">
+                    <span class="glyphicon glyphicon-hourglass"></span>
+                    <b>Your request "{{req.subject}}" is on hold</b> <br>
+                    Service Name : {{req.service.title}} <br>
+                    <span class="glyphicon glyphicon-calendar" style="color: gray"></span> From : {{req.fromo}} <br> To :  {{req.toon}}
+                    <hr>
+                </li>
+
+                </div>
+
+            </ul>
+        </div>
+        </li>
      <li style="margin-top: 15px ; width: 25px"> <div class="dropdown" dropdown [dropdownToggle]="false">
      <span class="glyphicon glyphicon-chevron-down" dropdown-open style="color: #777;"></span>
         <ul class="dropdown-menu">

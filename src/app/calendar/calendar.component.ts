@@ -13,6 +13,7 @@ declare var $ :any;
 export class CalendarComponent implements OnInit {
   evts :any= [];
   idS : any;
+  loading : any = true;
   constructor(private calendarService : CalendarService) { }
 
   ngOnInit() {
@@ -31,6 +32,7 @@ export class CalendarComponent implements OnInit {
             }
 
           }
+          this.loading=false;
           console.log(this.evts);
           $('#calendar').fullCalendar({
             header: {
